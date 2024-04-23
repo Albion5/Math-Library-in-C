@@ -1,0 +1,111 @@
+#suite s21_frexp_suite
+
+#test s21_frexp_test_1
+double num = 123;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+ck_assert_int_eq(exp1, exp2);
+
+#test s21_frexp_test_2
+double num = -123;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_3
+double num = 0;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_4
+double num = -0;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_5
+double num = __DBL_MAX__;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_6
+double num = -__DBL_MAX__;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+// #test s21_frexp_test_7
+// double num = 2 * __DBL_MAX__;
+// int exp1 = 0;
+// int exp2 = 0;
+// ck_assert_ldouble_infinite(s21_frexp(num, &exp));
+
+// #test s21_frexp_test_8
+// double num = -2 * __DBL_MAX__;
+// int exp1 = 0;
+// int exp2 = 0;
+// ck_assert_ldouble_infinite(s21_frexp(num, &exp));
+
+#test s21_frexp_test_9
+double num = 123456789123456789;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_10
+double num = -123456789123456789;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_11
+double num = log(-1);
+int exp1 = 0;
+ck_assert_ldouble_nan(s21_frexp(num, &exp1));
+
+#test s21_frexp_test_12
+double num = sqrt(-1);
+int exp1 = 0;
+ck_assert_ldouble_nan(s21_frexp(num, &exp1));
+
+#test s21_frexp_test_13
+double num = -sqrt(-1);
+int exp1 = 0;
+ck_assert_ldouble_nan(s21_frexp(num, &exp1));
+
+#test s21_frexp_test_14
+double num = s21_nan;
+int exp1 = 0;
+ck_assert_ldouble_nan(s21_frexp(num, &exp1));
+
+#test s21_frexp_test_15
+double num = -s21_nan;
+int exp1 = 0;
+ck_assert_ldouble_nan(s21_frexp(num, &exp1));
+
+// #test s21_frexp_test_16
+// double num = s21_inf;
+// int exp1 = 0;
+// int exp2 = 0;
+// ck_assert_ldouble_infinite(s21_frexp(num, &exp));
+
+// #test s21_frexp_test_17
+// double num = -s21_inf;
+// int exp1 = 0;
+// int exp2 = 0;
+// ck_assert_ldouble_infinite(s21_frexp(num, &exp));
+
+#test s21_frexp_test_18
+double num = 0.00123456789123456789;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));
+
+#test s21_frexp_test_19
+double num = -0.00000123456789123456789;
+int exp1 = 0;
+int exp2 = 0;
+ck_assert_ldouble_eq(s21_frexp(num, &exp1), frexp(num, &exp2));

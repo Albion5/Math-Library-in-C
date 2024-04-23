@@ -1,0 +1,43 @@
+#suite s21_my_modf_suite
+#test s21_my_modfl_test_1
+long double data1[SIZE] = {5.1L,3.0L,-5.1L, -3.0L, 123.6546L, -0.0L, -123.6546L, 7.0L, -123456324789.6542352787L }; 
+long double fact_whole, exp_whole;
+
+for (int i = 0; i < SIZE; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_modfl(data1[i], data2[j]), modf(data1[i], data2[j]));
+   ck_assert_ldouble_eq_tol(s21_modfl(data1[i], &fact_whole), modfl(data1[i],&exp_whole), 0.000000000001);
+   ck_assert_ldouble_eq_tol(fact_whole, exp_whole, 0.000000000001);
+}
+
+#test s21_s21_modfl_test_inf
+long double data1[2] = {s21_inf,-s21_inf}; 
+long double fact_whole, exp_whole;
+
+for (int i = 0; i <2; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_modfl(data1[i], data2[j]), modf(data1[i], data2[j]));
+   ck_assert_ldouble_eq_tol(s21_modfl(data1[i], &fact_whole), modfl(data1[i],&exp_whole), 0.000000000001);
+   ck_assert_ldouble_eq(fact_whole, exp_whole);
+}
+
+
+#test s21_s21_modfl_test_nan
+long double data1[2] = {s21_nan, -s21_nan}; 
+long double fact_whole;
+
+for (int i = 0; i <2; i++) {
+   ck_assert_ldouble_nan(s21_modfl(data1[i], &fact_whole));
+   ck_assert_ldouble_nan(fact_whole);
+}
+
+#test s21_s21_modfl_test_2
+long double data1[SIZE] = {-4022344136877799.22L, -6.46108188923e+15L, -1.46108188923e+0L, -1.46108188923e-8L, 173, -0.0, 666.666669, 1.0, DBL_MAX}; 
+long double fact_whole, exp_whole;
+
+for (int i = 0; i < SIZE; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_modfl(data1[i], data2[j]), modf(data1[i], data2[j]));
+   ck_assert_ldouble_eq_tol(s21_modfl(data1[i], &fact_whole), modfl(data1[i],&exp_whole), 0.000000000001);
+   ck_assert_ldouble_eq_tol(fact_whole, exp_whole, 0.000000000001);
+}

@@ -1,0 +1,77 @@
+#suite s21_cos_suite
+
+#test s21_cos_test_1
+double x = 123.6546L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000001);
+
+#test s21_cos_test_2
+double x = -123.9686L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000001);
+
+#test s21_cos_test_3
+double x = -563216.6456L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000001);
+
+#test s21_cos_test_4
+double x = 456564321.983221L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.0000001);
+
+#test s21_cos_test_5
+double x = 7545.469L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000001);
+
+#test s21_cos_test_6
+double x = -4654.23L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000000001);
+
+#test s21_cos_test_7
+double x = 2 * __DBL_MAX__;
+ck_assert_double_nan(s21_cos(x));
+
+#test s21_cos_test_8
+double x = -2 * __DBL_MAX__;
+ck_assert_ldouble_nan(s21_cos(x));
+
+#test s21_cos_test_9
+double x = 123456789.65465L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.00000001);
+
+#test s21_cos_test_10
+double x = -12456789.654221L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.00000001);
+
+#test s21_cos_test_11
+double x = log(-1);
+ck_assert_ldouble_nan(s21_cos(x));
+
+#test s21_cos_test_12
+double x = sqrt(-1);
+ck_assert_ldouble_nan(s21_cos(x));
+
+#test s21_cos_test_13
+double x = 1;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000000001);
+
+#test s21_cos_test_14
+double x = s21_nan;
+ck_assert_ldouble_nan(s21_cos(x));
+
+#test s21_cos_test_15
+double x = 45.469L;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000000001);
+
+#test s21_cos_test_16
+double x = s21_inf;
+ck_assert_ldouble_nan(s21_cos(x));
+
+#test s21_cos_test_17
+double x = -s21_inf;
+ck_assert_double_nan(s21_cos(x));
+
+#test s21_cos_test_18
+double x = 0;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000000001);
+
+#test s21_cos_test_19
+double x = -0;
+ck_assert_ldouble_eq_tol(cosl(x), s21_cos(x), 0.000000000001);

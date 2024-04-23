@@ -1,0 +1,37 @@
+#suite s21_abs_suite
+
+#test s21_abs_test_1
+int num = 123;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_2
+int num = -123;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_3
+int num = 0;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_4
+int num = -0;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_5
+int num = (int)__DBL_MAX__;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_6
+int num = (int)-__DBL_MAX__;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_7
+int num = (int)123456789123456789;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_8
+int num = (int)-123456789123456789;
+ck_assert_int_eq(abs(num), s21_abs(num));
+
+#test s21_abs_test_9
+int num = (int)log(-1);
+ck_assert_int_eq(abs(num), s21_abs(num));

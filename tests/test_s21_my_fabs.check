@@ -1,0 +1,29 @@
+#suite s21_my_fabs_suite
+#test s21_my_fabsl_test_1
+long double data1[SIZE] = {5.1L, 3.0L,-5.1L, -3.0L, 123.6546L, -0.0L, 123.6546L, 7.0L, -123456324789.6542352787L}; 
+
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_fabsl(data1[i]), fabsl(data1[i]), 0.000000000001);
+}
+
+
+#test s21_s21_fabsl_test_inf
+long double data1[2] = {s21_inf, -s21_inf}; 
+
+for (int i = 0; i < 2; i++) {
+  ck_assert_ldouble_eq(s21_fabsl(data1[i]), fabsl(data1[i]));
+}
+
+#test s21_s21_fabsl_test_nan
+long double data1[2] = {s21_nan, -s21_nan}; 
+
+for (int i = 0; i < 2; i++) {
+  ck_assert_ldouble_nan(s21_fabsl(data1[i]));
+}
+
+#test s21_s21_fabsl_test_2
+long double data1[4] = {-4022344136877799.22L, -6.46108188923e+15L, -1.46108188923e+0L, -1.46108188923e-8L}; 
+
+for (int i = 0; i < 4; i++) {
+  ck_assert_ldouble_eq_tol(s21_fabsl(data1[i]), fabsl(data1[i]), 0.000000000001);
+}

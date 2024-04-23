@@ -1,0 +1,27 @@
+#suite s21_factorial_suite
+
+#test s21_factorial_test_1
+unsigned num = 10;
+long double tolerance = 1e-12;
+ck_assert_ldouble_eq_tol(s21_factorial(num), 3628800, tolerance);
+
+#test s21_factorial_test_2
+unsigned num = 0;
+long double tolerance = 1e-12;
+ck_assert_ldouble_eq_tol(s21_factorial(num), 1, tolerance);
+
+#test s21_factorial_test_3
+unsigned num = 1;
+long double tolerance = 1e-12;
+ck_assert_ldouble_eq_tol(s21_factorial(num), 1, tolerance);
+
+#test s21_factorial_test_4
+unsigned num = 5;
+long double tolerance = 1e-12;
+ck_assert_ldouble_eq_tol(s21_factorial(num), 120, tolerance);
+
+#test s21_factorial_test_5
+unsigned num = 100;
+long double tolerance = 1e+145;
+ck_assert_ldouble_eq_tol(s21_factorial(num), 9.3326215443944152e+157,
+                         tolerance);

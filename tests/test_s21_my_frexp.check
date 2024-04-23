@@ -1,0 +1,63 @@
+#suite s21_my_frexp_suite
+#test s21_my_frexp_test_1
+// printf("test1\n");
+double data1[SIZE] = {5.1, 3.0,-5.1, -3.0, 123.6546, -0.0, 123.6546, 7.0, -DBL_MAX}; 
+int fact_exp, exp_exp;
+double fact_mant, exp_mant;
+ for (int i = 0; i < SIZE; i++) {
+    // printf("num=%.16lf\n", data1[i]);
+    fact_mant = s21_frexp(data1[i], &fact_exp);
+    exp_mant = frexp(data1[i],&exp_exp);
+    ck_assert_double_eq_tol(fact_mant, exp_mant, 0.000000000001);
+    ck_assert_int_eq(fact_exp, exp_exp);
+    // printf("my=%.16lf\nor=%.16lf\n", fact_mant, exp_mant);
+    // printf("my=%d\nor=%d\n", fact_exp, exp_exp);
+ }
+
+
+#test s21_s21_frexp_test_2
+// printf("test2\n");
+double data1[SIZE] = {-4022344136877799.22, -6.46108188923e+15, -1.46108188923e+0, -1.46108188923e-8, 173, -0.0, 666.666669, 1.0, DBL_MAX}; 
+int fact_exp, exp_exp;
+double fact_mant, exp_mant;
+ for (int i = 0; i < SIZE; i++) {
+    // printf("num=%.16lf\n", data1[i]);
+    fact_mant = s21_frexp(data1[i], &fact_exp);
+    exp_mant = frexp(data1[i],&exp_exp);
+    ck_assert_double_eq_tol(fact_mant, exp_mant, 0.000000000001);
+    ck_assert_int_eq(fact_exp, exp_exp);
+    // printf("my=%.16lf\nor=%.16lf\n", fact_mant, exp_mant);
+    // printf("my=%d\nor=%d\n", fact_exp, exp_exp);
+ }
+
+#test s21_s21_frexp_test_inf
+// printf("test_inf\n");
+double data1[2] = {s21_inf,-s21_inf}; 
+int fact_exp, exp_exp;
+double fact_mant, exp_mant;
+
+for (int i = 0; i <2; i++) {
+  // printf("%.16lf\n", data1[i]);
+  fact_mant = s21_frexp(data1[i], &fact_exp);
+  exp_mant = frexp(data1[i],&exp_exp);
+  ck_assert_double_eq(fact_mant, exp_mant);
+  ck_assert_int_eq(fact_exp, exp_exp);
+  // printf("my=%.16lf\nor=%.16lf\n", fact_mant, exp_mant);
+  // printf("my=%d\nor=%d\n", fact_exp, exp_exp);
+}
+
+
+#test s21_s21_frexp_test_nan
+// printf("test_nan\n");
+double data1[2] = {s21_nan, -s21_nan}; 
+int fact_exp, exp_exp;
+double fact_mant;
+
+for (int i = 0; i <2; i++) {
+  fact_mant = s21_frexp(data1[i], &fact_exp);
+  frexp(data1[i],&exp_exp);
+  ck_assert_double_nan(fact_mant);
+  ck_assert_int_eq(fact_exp, exp_exp);
+  // printf("my=%.16lf\nor=%.16lf\n", fact_mant, exp_mant);
+  // printf("my=%d\nor=%d\n", fact_exp, exp_exp);
+}

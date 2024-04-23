@@ -1,0 +1,93 @@
+#suite s21_my_exp_suite
+#test s21_my_exp_test_1
+double data1[SIZE] = {5.1, 3.0, -5.1, -3.0, -123.654667, -0.0, 1.7777777778, 7.0, -0.000244 }; 
+
+for (int i = 0; i < SIZE; i++) {
+  // printf("%.16lf\n", data1[i]);
+  // printf("my=%.16Lf\nor=%.16lf\n", s21_exp(data1[i]), exp(data1[i]));
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 0.000000000001);
+}
+
+
+#test s21_s21_exp_test_2
+// printf("test2\n");
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = s21_PI_2 * (i+1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  // printf("%.16lf\n", data1[i]);
+  // printf("my=%.16Lf\nor=%.16lf\n", s21_exp(data1[i]), exp(data1[i]));
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 1);
+}
+
+#test s21_s21_exp_test_3
+// printf("test3\n");
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = -s21_PI_2 * (i+1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 1);
+}
+
+#test s21_s21_exp_test_4
+// printf("test4\n");
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = s21_PI * (i + 1);
+  data1[i] = temp;
+}
+int k = 1;
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 0.000000001 *k);
+  k*= 10;
+}
+
+#test s21_s21_exp_test_5
+// printf("test5\n");
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = -s21_PI * (i+1);
+  data1[i] = temp;
+}
+
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_exp_test_6
+// printf("test6\n");
+double data1[SIZE] = {-30000, -43267, 0.000009, s21_PI_4, -s21_PI_4, s21_PI / 3, -1.0, 1.0, 0.0}; 
+
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_exp_test_inf
+// printf("test7\n");
+double data1[3] = {s21_inf,-s21_inf, DBL_MAX}; 
+
+for (int i = 0; i <3; i++) {
+  ck_assert_ldouble_eq(s21_exp(data1[i]), exp(data1[i]));
+}
+
+#test s21_s21_exp_test_nan
+double data1[2] = {s21_nan, -s21_nan}; 
+
+for (int i = 0; i <2; i++) {
+  ck_assert_ldouble_nan(s21_exp(data1[i]));
+}
+
+#test s21_s21_exp_test_7
+double data1[4] = {-DBL_MIN, DBL_MIN, -1.46108188923e+0, -1.46108188923e-8}; 
+
+for (int i = 0; i < 4; i++) {
+  ck_assert_ldouble_eq_tol(s21_exp(data1[i]), exp(data1[i]), 0.000000000001);
+}

@@ -1,0 +1,34 @@
+#suite s21_my_ceil_suite
+#test s21_my_ceil_test_1
+double data1[SIZE] = {5.1,3.0,-5.1, -3.0, 123.6546, -0.0, -123.6546, 7.0, -123456324789.6542352787 }; 
+
+for (int i = 0; i < SIZE; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_ceil(data1[i], data2[j]), ceill(data1[i], data2[j]));
+   ck_assert_ldouble_eq_tol(s21_ceil(data1[i]), ceill(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_ceil_test_inf
+double data1[2] = {s21_inf,-s21_inf}; 
+
+for (int i = 0; i <2; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_ceil(data1[i], data2[j]), ceill(data1[i], data2[j]));
+   ck_assert_ldouble_eq(s21_ceil(data1[i]), ceill(data1[i]));
+}
+
+
+#test s21_s21_ceil_test_nan
+double data1[2] = {s21_nan, -s21_nan}; 
+for (int i = 0; i <2; i++) {
+   ck_assert_ldouble_nan(s21_ceil(data1[i]));
+}
+
+#test s21_s21_ceil_test_2
+double data1[4] = {-4022344136877799.22, -6.46108188923e+15, -1.46108188923e+0, -1.46108188923e-8}; 
+
+for (int i = 0; i < 4; i++) {
+   //printf("%.16Lf\t %.16Lf\n", data1[i], data2[j]);
+   //printf("my=%.16Lf\nor=%.16Lf\n", s21_ceil(data1[i], data2[j]), ceill(data1[i], data2[j]));
+   ck_assert_ldouble_eq_tol(s21_ceil(data1[i]), ceill(data1[i]), 0.000000000001);
+}

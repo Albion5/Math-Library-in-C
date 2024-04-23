@@ -1,0 +1,96 @@
+#suite s21_fmod_suite
+
+#test s21_fmod_test_1
+long double x = 123.6546L;
+long double y = 45.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000000001);
+
+#test s21_fmod_test_2
+long double x = -123.9686L;
+long double y = 7545.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000000001);
+
+#test s21_fmod_test_3
+long double x = -563216.6456L;
+long double y = 7545.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000001);
+
+#test s21_fmod_test_4
+long double x = 456564321.983221L;
+long double y = 7545.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.0000001);
+
+#test s21_fmod_test_5
+long double x = 7545.469L;
+long double y = -s21_inf;
+ck_assert_double_eq(fmodl(x, y), s21_fmod(x, y));
+
+#test s21_fmod_test_6
+long double x = -4654.23L;
+long double y = s21_inf;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000000001);
+
+#test s21_fmod_test_7
+long double x = 2 * __DBL_MAX__;
+long double y = 7545.469L;
+ck_assert_double_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_8
+long double x = -2 * __DBL_MAX__;
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_9
+long double x = 123456789123456789.65465L;
+long double y = 754556465.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 10.00);
+
+#test s21_fmod_test_10
+long double x = -123456789123456789.654221L;
+long double y = 35646547545.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 100.0);
+
+#test s21_fmod_test_11
+long double x = log(-1);
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_12
+long double x = sqrt(-1);
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_13
+long double x = 7545.469L;
+long double y = -sqrt(-1);
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_14
+long double x = s21_nan;
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_15
+long double x = 7545.469L;
+long double y = -s21_nan;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_16
+long double x = s21_inf;
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_17
+long double x = -s21_inf;
+long double y = 7545.469L;
+ck_assert_ldouble_nan(s21_fmod(x, y));
+
+#test s21_fmod_test_18
+long double x = 0;
+long double y = 7545.469L;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000000001);
+
+#test s21_fmod_test_19
+long double x = -0;
+long double y = +s21_inf;
+ck_assert_ldouble_eq_tol(fmodl(x, y), s21_fmod(x, y), 0.000000000001);

@@ -1,0 +1,69 @@
+#suite s21_fabs_suite
+
+#test s21_fabs_test_1
+double num = 123;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_2
+double num = -123;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_3
+double num = 0;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_4
+double num = -0;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_5
+double num = __DBL_MAX__;
+ck_assert_double_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_6
+double num = -__DBL_MAX__;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_7
+double num = 2 * __DBL_MAX__;
+ck_assert_double_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_8
+double num = -2 * __DBL_MAX__;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_9
+double num = 123456789123456789;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_10
+double num = -123456789123456789;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_11
+double num = log(-1);
+ck_assert_ldouble_nan(s21_fabs(num));
+
+#test s21_fabs_test_12
+double num = sqrt(-1);
+ck_assert_ldouble_nan(s21_fabs(num));
+
+#test s21_fabs_test_13
+double num = -sqrt(-1);
+ck_assert_ldouble_nan(s21_fabs(num));
+
+#test s21_fabs_test_14
+double num = s21_nan;
+ck_assert_ldouble_nan(s21_fabs(num));
+
+#test s21_fabs_test_15
+double num = -s21_nan;
+ck_assert_ldouble_nan(s21_fabs(num));
+
+#test s21_fabs_test_16
+double num = s21_inf;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));
+
+#test s21_fabs_test_17
+double num = -s21_inf;
+ck_assert_ldouble_eq(fabs(num), s21_fabs(num));

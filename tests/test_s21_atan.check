@@ -1,0 +1,93 @@
+#suite s21_atan_suite
+
+#test s21_atan_test_1
+double x = 123.6546L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 1e-12);
+
+#test s21_atan_test_2
+double x = -123.9686L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 1e-12);
+
+#test s21_atan_test_3
+double x = -563216.6456L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000001);
+
+#test s21_atan_test_4
+double x = 456564321.983221L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000001);
+
+#test s21_atan_test_5
+double x = 7545.469L;
+ck_assert_double_eq(atanl(x), s21_atan(x));
+
+#test s21_atan_test_6
+double x = -4654.23L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_7
+double x = 2 * __DBL_MAX__;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_8
+double x = -2 * __DBL_MAX__;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_9
+double x = 123456789123456789.65465L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_10
+double x = -123456789123456789.654221L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 100.0);
+
+#test s21_atan_test_11
+double x = log(-1);
+ck_assert_ldouble_nan(s21_atan(x));
+
+#test s21_atan_test_12
+double x = sqrt(-1);
+ck_assert_ldouble_nan(s21_atan(x));
+
+#test s21_atan_test_13
+double x = 1;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_14
+double x = s21_nan;
+ck_assert_ldouble_nan(s21_atan(x));
+
+#test s21_atan_test_15
+double x = 45.469L;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_16
+double x = s21_inf;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_17
+double x = -s21_inf;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_18
+double x = 0;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_19
+double x = -0;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_20
+double x = 0.5;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_21
+double x = -0.7;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_22
+double x = 10.4;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);
+
+#test s21_atan_test_23
+double x = -1.001;
+ck_assert_ldouble_eq_tol(atanl(x), s21_atan(x), 0.000000000001);

@@ -1,0 +1,103 @@
+#suite s21_modf_suite
+
+#test s21_modf_test_1
+double num = 123.456;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_2
+double num = -123.789;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_3
+double num = 0.0;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_4
+double num = -0.0;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_5
+double num = __DBL_MAX__;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_6
+double num = -__DBL_MAX__;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_7
+double num = 2 * __DBL_MAX__;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_8
+double num = -2 * __DBL_MAX__;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_9
+double num = 123456789123456789.456544565464;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_10
+double num = -123456789123456789.68235646546;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_eq(num_modf_int, num_test_int);
+
+#test s21_modf_test_11
+double num = log(-1);
+double num_test_int;
+ck_assert_double_nan(s21_modf(num, &num_test_int));
+ck_assert_double_nan(num_test_int);
+
+#test s21_modf_test_12
+double num = sqrt(-1);
+double num_test_int;
+ck_assert_double_nan(s21_modf(num, &num_test_int));
+ck_assert_double_nan(num_test_int);
+
+#test s21_modf_test_13
+double num = -sqrt(-1);
+double num_test_int;
+ck_assert_double_nan(s21_modf(num, &num_test_int));
+ck_assert_double_nan(num_test_int);
+
+#test s21_modf_test_14
+double num = s21_nan;
+double num_test_int;
+ck_assert_double_nan(s21_modf(num, &num_test_int));
+ck_assert_double_nan(num_test_int);
+
+#test s21_modf_test_15
+double num = -s21_nan;
+double num_test_int;
+ck_assert_double_nan(s21_modf(num, &num_test_int));
+ck_assert_double_nan(num_test_int);
+
+#test s21_modf_test_16
+double num = s21_inf;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_infinite(num_test_int);
+
+#test s21_modf_test_17
+double num = -s21_inf;
+double num_test_int, num_modf_int;
+ck_assert_double_eq(modf(num, &num_modf_int), s21_modf(num, &num_test_int));
+ck_assert_double_infinite(num_test_int);

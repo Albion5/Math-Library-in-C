@@ -1,0 +1,73 @@
+#suite s21_acos_suite
+
+#test s21_acos_test_1
+double x = 0.1236546L;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 1e-12);
+
+#test s21_acos_test_2
+double x = -0.1239686L;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 1e-12);
+
+#test s21_acos_test_3
+double x = -1.0L;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000001);
+
+#test s21_acos_test_4
+double x = 1.0L;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000001);
+
+#test s21_acos_test_5
+double x = 0.5;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000001);
+
+#test s21_acos_test_6
+double x = -0.7;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_7
+double x = log(-1);
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_8
+double x = sqrt(-1);
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_9
+double x = 1;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_10
+double x = s21_nan;
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_11
+double x = s21_inf;
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_12
+double x = -s21_inf;
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_13
+double x = 0;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_14
+double x = -0;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_15
+double x = 0.5;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_16
+double x = -0.7;
+ck_assert_ldouble_eq_tol(acosl(x), s21_acos(x), 0.000000000001);
+
+#test s21_acos_test_17
+double x = 10.4;
+ck_assert_ldouble_nan(s21_acos(x));
+
+#test s21_acos_test_18
+double x = -1.001;
+ck_assert_ldouble_nan(s21_acos(x));

@@ -1,0 +1,73 @@
+#suite s21_my_sin_suite
+#test s21_my_sin_test_1
+double data1[SIZE] = {5.1,3.0,-5.1, -3.0, -123.654667, -0.0, 123.6546, 7.0, -0.000244 }; 
+
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_2
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = s21_PI_2 * (i+1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_3
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = -s21_PI_2 * (i+1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_4
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = s21_PI * (i + 1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_5
+double data1[SIZE];
+long double temp;
+for (int i= 0; i < SIZE; i++) {
+  temp = -s21_PI * (i+1);
+  data1[i] = temp;
+}
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_6
+double data1[SIZE] = {30000, -43267, 0.000009, s21_PI_4, -s21_PI_4, s21_PI / 3, -1.0, 1.0, 0.0}; 
+
+for (int i = 0; i < SIZE; i++) {
+  ck_assert_ldouble_eq_tol(s21_sin(data1[i]), sinl(data1[i]), 0.000000000001);
+}
+
+#test s21_s21_sin_test_inf
+double data1[2] = {s21_inf,-s21_inf}; 
+
+for (int i = 0; i <2; i++) {
+  ck_assert_ldouble_nan(s21_sin(data1[i]));
+}
+
+
+#test s21_s21_sin_test_nan
+double data1[2] = {s21_nan, -s21_nan}; 
+
+for (int i = 0; i <2; i++) {
+  ck_assert_ldouble_nan(s21_sin(data1[i]));
+}
